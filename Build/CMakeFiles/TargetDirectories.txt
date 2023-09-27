@@ -1,0 +1,3 @@
+D:/_projects/_archicad/Build/CMakeFiles/Tollcad.dir
+D:/_projects/_archicad/Build/CMakeFiles/ALL_BUILD.dir
+D:/_projects/_archicad/Build/CMakeFiles/ZERO_CHECK.dir

@@ -4,3 +4,8 @@ conan/*
 out/*
 .vsconan
 CMakeUserPresets.json
+
+/Build/.vs/*
+/Build/Debug/*
+/Build/x64/Debug/*
+/Build/Tollcad.dir/Debug/*
