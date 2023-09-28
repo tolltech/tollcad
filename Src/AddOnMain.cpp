@@ -4,6 +4,8 @@
 #include "ResourceIds.hpp"
 #include "DGModule.hpp"
 
+#include "StringConversion.hpp"
+
 static const GSResID AddOnInfoID			= ID_ADDON_INFO;
 	static const Int32 AddOnNameID			= 1;
 	static const Int32 AddOnDescriptionID	= 2;
@@ -65,6 +67,18 @@ private:
 	DG::Separator	separator;
 };
 
+static void CountNumberOfWalls()
+{
+	GS::Array<API_Guid> wallGuids;
+	GSErrCode err = ACAPI_Element_GetElemList(API_WallID, &wallGuids);
+	if (err != NoError) {
+		return;
+	}
+
+	USize wallCount = wallGuids.GetSize();
+	DG::InformationAlert(GS::ValueToUniString(wallCount) + " walls here, pokakat'", "", "OK");
+}
+
 static GSErrCode MenuCommandHandler (const API_MenuParams *menuParams)
 {
 	switch (menuParams->menuItemRef.menuResID) {
@@ -72,8 +86,7 @@ static GSErrCode MenuCommandHandler (const API_MenuParams *menuParams)
 			switch (menuParams->menuItemRef.itemIndex) {
 				case AddOnCommandID:
 					{
-						ExampleDialog dialog;
-						dialog.Invoke ();
+						CountNumberOfWalls();
 					}
 					break;
 			}
