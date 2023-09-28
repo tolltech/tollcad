@@ -67,7 +67,6 @@ private:
 	DG::Separator	separator;
 };
 
-//https://archicadapi.graphisoft.com/archicad-maze-generator-add-on-tutorial-part-1
 static void CountNumberOfWalls()
 {
 	GSErrCode            err;
@@ -96,20 +95,17 @@ static void CountNumberOfWalls()
 		if (err != NoError)
 			return;
 
-		//https://archicadapi.graphisoft.com/documentation/api_gridmesh
 		if (mesh.header.hasMemo) {
 			err = ACAPI_Element_GetMemo(mesh.header.guid, &memo);
 			if (err != NoError) {
 				return;
 			}
-			
+
 			//here deeper
 
 			ACAPI_DisposeElemMemoHdls(&memo);
 		}
 	}	
-
-	//boxes https://archicadapi.graphisoft.com/documentation/api_eleminfo3d
 
 	GS::Array<API_Guid> inds = GS::Array<API_Guid>();
 
