@@ -106,6 +106,13 @@ static void CountNumberOfWalls()
 			//here deeper
 
 			ACAPI_DisposeElemMemoHdls(&memo);
+
+			API_ElemInfo3D mesh3D = {};
+
+			err = ACAPI_Element_Get3DInfo(mesh.header, &mesh3D);
+
+			if (err != NoError)
+				return;
 		}
 	}	
 
