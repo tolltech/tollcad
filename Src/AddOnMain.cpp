@@ -105,14 +105,29 @@ static void CountNumberOfWalls()
 			
 			//here deeper
 
+			ACAPI_WriteReport("i: (x, y, z)", false);
+			ACAPI_WriteReport("------------", false);
+			for (GS::Int32 i = 1; i <= mesh.mesh.poly.nCoords; ++i) {
+				ACAPI_WriteReport("%d: (%f, %f, %f): ", false, i, (*memo.coords)[i].x, (*memo.coords)[i].y, (*memo.meshPolyZ)[i]);
+			}
+
 			ACAPI_DisposeElemMemoHdls(&memo);
 
-			API_ElemInfo3D mesh3D = {};
+			//API_ElemInfo3D mesh3D = {};
 
-			err = ACAPI_Element_Get3DInfo(mesh.header, &mesh3D);
+			//err = ACAPI_Element_Get3DInfo(mesh.header, &mesh3D);
+
+			//if (err != NoError)
+			//	return;
+
+			//API_Component3D          comp3D;
+			//BNZeroMemory(&comp3D, sizeof(API_Component3D));
+			//comp3D.header.index = 0;
+			//comp3D.header.typeID = API_BodyID;
+			/*err = ACAPI_ModelAccess_GetComponent(&comp3D);
 
 			if (err != NoError)
-				return;
+				return;*/
 		}
 	}	
 
@@ -147,7 +162,7 @@ static void CountNumberOfWalls()
 		}
 	}
 
-	DG::InformationAlert(GS::ValueToUniString(inds.GetSize()) + " objects selected, pokakat'", "", "OK");
+	DG::InformationAlert(GS::ValueToUniString(inds.GetSize()) + " objects selected, pokakakat'", "", "OK");
 }
 
 static GSErrCode MenuCommandHandler (const API_MenuParams *menuParams)
