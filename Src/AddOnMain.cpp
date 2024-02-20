@@ -158,11 +158,18 @@ static void CountNumberOfWalls()
 			if (err != NoError)
 				continue;
 
-			
+			element.object.level = 0;
+
+			API_Element mask{};
+			ACAPI_ELEMENT_MASK_CLEAR(mask);
+			ACAPI_ELEMENT_MASK_SET(mask, API_Element, object.level);
+
+			err = ACAPI_CallUndoableCommand("Create text",
+				[&]() -> GSErrCode {
+					return ACAPI_Element_Change(&element, &mask, NULL, 0, true);
+				});
 		}
 	}
-
-	DG::InformationAlert(GS::ValueToUniString(inds.GetSize()) + " objects selected, pokakakat'", "", "OK");
 }
 
 static GSErrCode MenuCommandHandler (const API_MenuParams *menuParams)
